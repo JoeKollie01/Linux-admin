@@ -1,0 +1,177 @@
+Syllabus Overview
+=======================
+Module 1 - Understanding Linux Concepts
+    - What is Linux?
+    - Everyday use of Linux
+    - Unix vs. Linux
+
+Module 2 - Download, Install and Configure
+
+        - What is Oracle Virtualbox
+        - Downloading and Installing Oracle Virtual Box
+        - Creating virtual machine
+        - Linux Distributions
+        - Different way to install Linux
+        - Downloading and installing Linux (CentOS)
+        - Redhat Linux installation (Optional)
+        - Linux Desktop
+        - VM Management
+        - Linux vs Windows
+
+Module 3 - System Access And File System
+
+    -Command Prompt and Getting Prompts Back
+    -Accessing Linux system (ssh, terminal console)
+    -Download and install Putty and connect via Putty
+    -Important Things to Remember in Linux
+    - Introduction to File System and description
+    - File system navigation commands 
+        - cd, pwd, ls etc
+    - File System Paths
+        -(Absolute and Relative)
+    - Directory listing Overview
+    - Creating files and directories
+        -(touch, cp, vi mkdir etc)
+    - Finding files and directories
+
+        -(find, locate and updatedb)
+
+    - WildCards
+        -(, $ [])
+    - Soft and hard links
+
+        -(ln)
+
+Module 4 - Linux Fundamentals
+
+    - Command Syntax
+    - Files and Directory Permissions
+        -(chmod)
+    - File Ownership
+        -(chown and chgrp)
+    
+    - Access Control List (ACL)
+
+    - Getting Help
+        - (man, whatis and --help)
+    
+    - TAB completion and up arrow keys
+
+    - Adding text to file
+        - (echo, redirects and vi)
+
+    - Standard Output to a file
+        -(tee command)
+    
+    - Pipes
+
+        -(|)
+
+    - File Maintenance commands
+
+        - (cp, rm, mv, mkdir rmdir etc)
+    
+    -File Display commands
+        -(cat, more, less, head, tail and vi)
+    
+    -Filters / Text Processing commands
+        -(cut, sort, grep, awk, uniq, wc)
+    
+    - Compress, un-compress and truncate files
+        -(tar, gzip, gunzip, truncate)
+    
+    - Combining and Splitting files
+        -(cat and cut)
+
+    - Linux and Windows
+
+Module 5 - System Administration
+
+    - Linux File Editors (vi text editor)
+    - Difference between vi and vim Editors
+    - Substitution Command - (sed)
+    - User account management - (useradd, groupadd, usermod, userdel)
+    - Switch users and Sudo Access
+    - Monitor users - (who, last, w and id)
+    - Linux Directory Service - Account Authentication
+    - Difference between Active Directory, LDAP, IDM, WinBIND, OpenLDAP etc
+    - Talking to users - (users, wall, write)
+    - System utility commands - (date, uptime, hostname, which, cal, bc)
+    - System Logs Monitor - (var/log)
+    - Processes and schedules - (systemctl, ps, top, kill, crontab, at)
+    - System Monitoring Commands - (top, df, dmesg, iostat 1, nestat, free)
+    - OS Maintenance Commands - (Shutdown, reboot, halt, init)
+    - Changing system hostnames - (hostnamectl)
+    - Finding system information - (uname, redhat-release, *rel*, arch)
+    - Terminal control keys, Terminal commands - (clear, exit, script)
+    - Recover root password
+    - SOS Report
+    - Environmental variables
+
+Module 6 - Shell Scripting
+
+    -Linux Kernel
+    -What is a Shell
+    -Types of  Shells
+    -Shell Scripting
+    - Basic Shell scripts
+    - Input and Output of script
+    - If - then scripts
+    - For loop scripts
+    - Do - while scripts
+    - Case statement scripts
+    - Check Remote Servers Connectivity
+    - Aliases
+    - User and Global Aliases
+    - Shell History
+
+
+Module 7 - Networking, Servers and System Updates
+
+    -Enabling internet in Linux VM
+    - Network Components
+    - Network files and commmands - (ping, ifconfig, nestat, tcpdump, networking config files)
+    -NIC information
+    -NIC information
+    -NIC or Port Bonding
+    -Download files with URLs (wget)
+    -Connectivity commands - (curl and ping)
+    - File Transfer Protocol - (FTP, SCP and rsync)
+    - System updates and repositories - (rpm and yum)
+    - Patch Management
+    - Advance Package Management
+    - Setting up local repositories
+    - SSH and Telnet
+    - Domain Name System - (DNS)
+    - Hostname/IP lookup (nslookup and dig)
+    - NTP and Chronyd
+    -Sendmail
+    -WebServer(httpd)
+    -Central Logger (rsyslog)
+    -Securing Linux Machine (OS Hardening)
+    -OpenLDAP Installation and configuration
+    -Tracing Network Traffic
+    -SSH Keys(Accessing without password)
+
+Module 8 - Disk Management And Run Levels
+
+    -System run Levels
+    -Linux boot process (version 6 and 7)
+    -Message of the Display
+    -Customize Message of the Display
+    -Storage
+    -Disk Partition - (df, fdisk, etc)
+    - Add Disk and Create Standard Partition
+    -Logical Volume Manager (LVM)
+    - LVM Configuration during Installation
+    - Add Virtual Disk and Create New LVM Partition - (pvcreate, vgcreate, lvcreate)
+    - Extend Disk using LVM 
+    -Adding swap space
+    -RAID
+    -File System Check (fsck and xfs_repair)
+    -System backup
+    -Network File System - (NFS)
+    - Difference between CentOs/Redhat 5,6, and 7
+
+    
+
