@@ -1,0 +1,30 @@
+What is Linux
+- is an operating system which sits in the middle of your hardware and users
+
+Unix vs. Linux
+ Unix was first developed for multi-user and multi-tasking in mid - 1970 in Bell Labs
+ by ATT, GE and Massachusetts institute of Technology
+
+ Then born Linux in 1991 by Linus Torvalds
+
+ Linux is open source
+
+ Unix is mostly used Sun as Solaris, HP - UX, AIX etc
+
+ Linux is used by many developers community or companies (Redhat, CentOS, Debian) etc
+
+ Unix comparatively supports very fewer File systems
+
+ Linux can be installed on a wide variety of computer hardware, ranging from mobile phones tablets video game consoles to mainframes and supercomputers
+ 
+
+VirtualBox  Snapshots
+    - allow the user to save the current state of their VM
+
+
+Oracle Virtual Machine Management
+
+    Add more resources may include
+        - memory
+        - CPUs
+        - storage
