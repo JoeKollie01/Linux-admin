@@ -236,5 +236,70 @@ Check User Existence
 Command : grep username /etc/passwd
 
 
+Creating Files and directories
+=================================
+
+Commands for Creating Files
+
+    -touch
+    -cp 
+    -vi
+
+Commands for Creating directories
+==================================
+
+    -mkdir
+
+Command(s) to list files and dir when it was last modified
+============================================================
+    - ls -ltr
+
+Command to copy file(s) and renew it
+=========================================
+    cp filename newfilename
+
+Command to create vi file(s)
+=============================
+    - vi homer
+        it will open up vi editor type in :wq!
+
+Command to create directories
+==============================
+    mkdir seinfield
+
+Copying directories
+========================
+Command to copy a directory
+    - cp
+
+To copy a directory on Linux, you have to execute the "cp" command with the "-R" option for recursive
+and specify the source and destination directories to be copied
+
+    - cp -R <source_folder> <destination_folder>
+
+    To renew and copy use this below command
+    =========================================
+        cp -R <source_folder> <destination_folder>/<newfolder_name
 
 
+Find Files and directories
+==================================
+
+Two main commands are used to find files/directories in Linux
+
+    -find
+    -locate
+
+    Using the "Find" command to get a file/directory
+    ===================================================
+
+        find . -name "file or dir"
+
+        . = indicate the search is done within the current directory (e.g /home)
+
+    Note: If "locate" command does not output any result, then as root run "updatedb"
+    Also make sure you have "mlocate" package installed
+
+    To check = rpm -qa | grep mlocate
+
+    To install = yum install mlocate
