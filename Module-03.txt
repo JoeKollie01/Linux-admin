@@ -1,0 +1,240 @@
+Important Things to Remember in Linux
+=======================================
+    - Linux has super-user account called root
+    Root - is the most powerful account that can create, modify, delete accounts and make changes to system configuration files
+
+    - Linux is case-sensitive system
+        - ABC is NOT same as abc 
+    
+    - Avoid using spaces when creating files and directories
+
+    - Linux kernel is not an operating system. It is a small software within Linux operating
+    system that takes commands from users and pass them to system hardware or peripherals
+
+    - Linux is mostly CLI not GUI
+
+    - Linux is very flexible as compared to other operating systems
+
+
+    Access to  Linux system
+    =============================
+
+    There are 3 types of Access
+        - console
+        - Remote
+
+    The console is a direct access to an operating system when it is connected through VGA, HDMI, DVI etc
+
+    The 2^nd type of access is remote where you connect to your operating system remotely over the network
+
+
+    Getting an I.P Address in Linux
+    =================================
+
+    - In the terminal  run ----- ifconfig
+         
+         -latter version of CentOs may not have the "ifconfig" instead install the following before using "ip addr"
+
+         run yum install net-tools
+
+    
+    Command Prompts and Getting Prompts Back
+    ========================================
+
+    What are command Prompts
+        - a command prompt, also referred to simply as a prompt, is a short text at 
+        the start of the command line followed by prompt symbol on a command line interface
+
+    
+    Command to get a hostname
+    ============================
+        - whoami
+
+    
+    Intro o Filesystem
+    =========================
+    What is a Filesystem?
+        - it is a system used by operating system to manage files.The system controls how data is saved or retrieved
+
+    Operating system stores files and directories in an organized and structured way
+        -System configuration files
+        -User files
+        -Log files
+        -Commands or scripts
+    
+    There are many different types of filesystems. In general, improvements have been made to filesystems with new releases of operating systems and each new Filesystem
+    has been given a different name
+        - ext3, ext4, xfs, NTFS, FAT etc
+
+    
+    
+    File System Structure and its Descriptions
+    ===========================================
+
+    /boot - contains file that is used by the boot loader (grub.cfg)
+    /root - root user home directory. It is not same as /
+    /dev -  system devices (e.g disk, cdrom, speakers, flashdrive, keyboard etc)
+    /etc - configuration files
+    /bin --- /usr/bin - everyday user commands
+    /sbin --- /usr/sbin - system/filesystem commands
+    /opt - optional add-on applications (Not part of OS apps) mostly third-party apps
+    /proc - running processes (only exist in Memory)
+    /lib --- usr/lib - C programming library files needed by commands and apps
+                    strace -e open pwd
+    /tmp - directory for  temporary files
+    /home - directory for user
+    /var - system logs
+    /run - system daemons that start very early (e.g systemd and udev) to store temporary runtime files like PID files
+    /mnt - to mount external filesystem (e.g NFS)
+    /media - for cdrom mounts
+
+
+    Navigating File System
+    =======================
+
+    When navigating a Unix filesystem, there are a few important commands
+
+    "cd"
+    "pwd"
+    "ls"
+
+    - cd = stands for change directory. It is the primary commands for moving you around the filesystem
+    - pwd = stands for print working directory. It tells you where current location is
+    - ls  = stands for list. It lists all the directories/files within a current working directory
+
+    To switch to root account
+    ==============================
+     = su -
+
+    
+    / directory
+    =================
+    It is a parent directory
+
+    Note!!!
+     anything that start with a dash " - " mean it is a file
+     anything with a "d" mean it a directory
+     while " l" mean it is a link
+
+    cd ..
+    ========
+    it takes you one directory back
+
+   Linux File or Directory Properties
+   ===================================
+
+   Each file or directory in Linux has detail information or Properties
+
+   Type 
+   =====
+   drwxr-xr-x
+   lrwxrwxrwx
+   -rw-r-r--
+
+   # of links
+   ================
+   21
+   1
+   1
+
+   Owner
+   ==============
+   root
+   root
+   root
+
+   Group
+   =============
+   root
+   root
+   root
+
+   Size
+   ==============
+   4096
+   7
+   0
+
+   Month
+   =============
+   Feb 
+   Feb
+   Mar 
+
+   Day 
+   ===============
+   27
+   27
+   2
+
+   Time
+   ===============
+   13:13
+   13:15
+   11:15
+
+   Name 
+   =============
+   var
+   bin
+   testfile
+
+
+Linux File Type
+=================
+
+-  = regular file
+d  = directory
+l  = link
+c = special file or device file
+s  = socket
+p =  Named pipe 
+b = Block device
+
+
+What is Root
+================
+
+There are 3 type of root on Linux system
+
+- Root account: root is an account or a username on Linux machine and it is the most powerful account which has access to all commands and files
+- Root as / : the very first directory in Linux is also referred as root directory
+- Root home directory : the root user account also has a directory located in  / root which is called root home directory
+
+Changing Password
+======================
+- Change the initial password as soon as you login
+
+Command = passwd userid
+
+Old password : enter your current password
+New password: enter new password
+Retype new password: -re-enter the new password
+
+File System Paths
+=======================
+There are two paths to navigate to a filesystem
+    -Absolute Path
+    -Relative Path
+
+An absolute path always begins with a "/" . This indicates that the path starts at the root directory.
+Example of an absolute path is
+
+    cd /var/log/samba
+
+A relative path does not begin with a "/" . It identifies a location relative to the current position.
+Example of a relative path is
+
+    cd /var
+    cd log
+    cd samba
+
+
+Check User Existence
+=====================
+
+Command : grep username /etc/passwd
+
+
+
+
