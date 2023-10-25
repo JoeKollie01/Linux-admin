@@ -296,6 +296,7 @@ Two main commands are used to find files/directories in Linux
         find . -name "file or dir"
 
         . = indicate the search is done within the current directory (e.g /home)
+         / = indicate the parent or root directories
 
     Note: If "locate" command does not output any result, then as root run "updatedb"
     Also make sure you have "mlocate" package installed
@@ -303,3 +304,19 @@ Two main commands are used to find files/directories in Linux
     To check = rpm -qa | grep mlocate
 
     To install = yum install mlocate
+
+Difference between find and locate
+==================================
+    - "locate" uses a prebuilt database, which should be regularly updated while "find" iterates over a filesystem to 
+    locate files. Thus. locate is much faster than find, but can be inaccurate if the database (can be seen as a cache) is not updated
+
+    - To update locate database run "updatedb"
+
+
+WILDCARDS
+==================
+A wildcard is a character that can be used as a substitute for any of a class of characters in a search
+
+* = represents zero or more characters
+? = represents a single character
+[] = represents a range of characters
