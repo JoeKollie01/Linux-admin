@@ -320,3 +320,66 @@ A wildcard is a character that can be used as a substitute for any of a class of
 * = represents zero or more characters
 ? = represents a single character
 [] = represents a range of characters
+{} =  expands characters
+
+Examples for wildcard
+=======================
+    Asterisk (*):
+        *.txt: Matches all files with the ".txt" extension in the current directory.
+        file*: Matches all files that start with "file" in the current directory.
+
+    Question Mark (?):
+        file?.txt: Matches files like "file1.txt," "fileA.txt," but not "file12.txt."
+        image?.png: Matches "image1.png," "imageA.png," etc.
+
+    Character Class ([]):
+        [aeiou].txt: Matches files that start with a vowel and end with ".txt."
+        [0-9].jpg: Matches files that start with a single digit and end with ".jpg."
+
+    Negation ([!...] or [^...]):
+        [!0-9]*: Matches all files that do not start with a digit.
+        [^aeiou]*.txt: Matches files that do not start with a vowel and end with ".txt."
+
+    Brace Expansion ({}):
+        {file1,file2}.txt: Expands to "file1.txt" and "file2.txt."
+        {red,green,blue}ball.jpg: Expands to "redball.jpg," "greenball.jpg," and "blueball.jpg."
+
+    Range Wildcards ({start..end}):
+        {1..5}.txt: Expands to "1.txt," "2.txt," "3.txt," "4.txt," and "5.txt."
+        {A..F}.png: Expands to "A.png," "B.png," "C.png," "D.png," "E.png," and "F.png."
+
+    Double Asterisk (**):
+        dir/**/*.txt: Matches all ".txt" files in the "dir" directory and its subdirectories.
+
+    Tilde (~):
+        ~username/*.txt: Matches all ".txt" files in the home directory of the specified user.
+
+    Wildcards with Commands:
+        ls *.pdf: Lists all PDF files in the current directory.
+        cp image*.jpg destination/: Copies all files starting with "image" to the "destination" directory.
+        rm backup*.*: Removes all files in the current directory that start with "backup."
+
+
+    Soft and hard links
+    ============================
+        inode = pointer or number of a file on the hard disk
+        Soft Link = Link will be removed if file is removed or renamed
+        Hard Link = deleting renaming or moving the original file will not affect the hard link
+
+         * ln  = hard
+         * ln -s  = soft link
+
+        Note: Cannot create soft or hard link within the same directory with the same name
+        That is why we will create links in /tmp directory
+
+        To list the inode # of a link/file/dir use the below command
+        ======================================================
+            ls -li
+
+        Note: If get an error: "ln: failed to create hard link './hulk' => '/home/test/hulk': Invalid cross device link
+        It is most likely that the user /home direcory isn't on the same partition as the /tmp directory
+        Hard links only work within the same partition
+        
+
+
+
