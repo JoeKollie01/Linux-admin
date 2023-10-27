@@ -1,0 +1,137 @@
+Commands Syntax
+===================
+
+* Command options and arguments
+
+Commands typically have the syntax:
+    command option(s) argument(s)
+
+
+options
+
+Modify the way that a command works
+Usually consist of a hyphen (-) or dash followed by a single letter
+Some commands accept multiple options which usually be grouped together after a single hyphen
+
+arguments
+
+Most commands are used together with one or more arguments
+Some commands assume a default argument if none is supplied
+Arguments are optional for some commands and required by others
+
+
+File Permissions
+=================
+Unix is a multi-user system.Every file and directory in your account can be protected from or made accessible to other users by changing its access permissions.
+Every user has responsibility for controlling access to their files
+
+*Permissions for a file or directory may be restricted to by types
+
+*There are 3 type of permissions
+    - r = read 
+    - w = write
+    - x = execute - running a programming
+
+Each permission (rwx) can be controlled at three levels
+
+    - u - user = yourself
+    - g - group = can be people in the same project
+    - o  - other = everyone on the system
+
+File or Directory permission can be displayed by running ls -l command
+    -rwxrwxrwx
+
+Command to change permission
+    - chmod
+
+    command to remove file permission for everyone 
+        - chmod a-rwx filename
+
+Permission Using Numeric modified
+=====================================
+    Permission to a file and directory can also be assigned numerically
+        -chmod ugo + r File
+
+        Or -chmod 444 File
+
+                -r--r--r--
+
+Owners assigned Permission On Every File and directory
+
+    User ==============> Read, Write, Execute
+    Group ==============> Read, Write, Execute
+    All ================> Read, Write, 
+    
+The table below assigns numbers to permissions type
+
+Numbers         Permission type         Symbol
+0               No Permission           ---
+1               Execute                 --x
+2               Write                   -w-
+3               Execute + Write         -wx
+4               Read                    r--
+5               Read + Execute          r-x
+6               Read + Write            rw-
+7               Read+Write+Execute      rwx
+
+
+Command "Chmod" => change file mode bits/permissions
+
+
+File Ownership
+===============
+ There are 2 owners of a file or directory
+    -User and group
+
+Command to change file Ownership
+    -chown and chgrp
+    *chown = changes the ownership of a file
+    *chgrp = changes the group ownership of a file
+
+Recursive ownership change option (Cascade)
+
+    -R
+
+Access Control List (ACL)
+============================
+
+What is ACL
+    - Access control list provides an additional, more flexible permission mechanism
+    for file systems. It is designed to assist with UNIX file permissions. ACL allows you to give permissions
+    for any user or group to any disc resource
+
+Use of ACL
+    Think of a scenario in which a particular user is not a member of group created by you
+    but still you want to give some read or write access how can you do it without making user a member of group
+    ,here comes in picture Access Control List, ACL helps us to do this trick
+
+    Basically, ACL are used to make a flexible permission mechanism in Linux
+
+    From Linux man pages, ACL are used to define more fine-grained discretionary access
+    rights for files and directories
+
+    Commands to assign and remove ACL permissions are:
+
+        - setfacl and getfacl
+
+    List of commands for setting up ACL:
+
+    1) To add permission for user
+        - setfacl -m u:user:rwx /path/to/file
+
+    2) To add permissions for a group
+        - setfacl -m g:group:rw  /path/to/file
+    
+    3) To allow all files or directories to inherit ACL entries from the directory it is within
+        - setfacl -Rm "entry" /path/to/dir
+
+    4) To remove a specific entry
+        - setfacl -x u:user /path/to/file (For a specific user)
+    
+    5) To remove all entries
+        -setfacl -b path/to/file (For all users)
+
+    Note:
+        As you assign the ACL permission to a file/directory it adds + sign at the end of the permission
+        Setting w permission with ACL does not allow to remove a file
+        
