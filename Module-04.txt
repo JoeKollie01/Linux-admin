@@ -202,4 +202,131 @@ Error(stderr) - 2
         We can use redirects to route errors from the screen
             - E.g  ls -l /root 2> errorfile
 
-      
+
+Standard Output to a File (tee)
+=================================
+    tee command is used to store and view (both at the same time) the output of any command
+
+    The command is named after the T-splitter used in plumbing. It basically breaks the output of a program so that it can be both displayed and saved in a file.
+    It does both the tasks simultaneously, copies the result into the specified files or variables and also display the result
+
+
+
+        command ======>  tee =====> stdout
+                           =
+                           =
+                           =
+                           file
+ 
+ E.g  echo "Linux is fun to learn" | tee learning
+      echo "Linux is fun to learn" | tee -a learning
+
+
+
+Command "wc"
+==============
+wc = print newline, word, and byte counts for each file
+
+E.g wc -c eliane-david
+
+
+
+Pipes
+=========
+
+A pipe is used by the shell to connect the output of one command directly to the input
+of another command
+
+The symbol for a pipe is the vertical bar(|). The command syntax is:
+
+    command1 [arguments] | command2 [arguments]
+
+"Tail" command give you the last line of your output
+E.g ls -l | tail -1
+
+File Maintenance Commands
+============================
+    cp = copy files and directories
+    rm =  rm files and directories
+    mv =  move (rename) files
+    mkdir =  make directories
+    rmdir or rm -r = remove directories
+    chgrp =  change group ownership
+    chown =  change file owner and group
+
+
+File Display Commands
+=========================
+
+cat = concatenate files and print on the standard output
+    - E.g  cat  filename
+
+more = display files on a page-by-page basis
+
+    -E.g more filename
+
+less = opposite of more
+
+    -E.g less filename
+
+head = output the first part of files
+
+    -E.g head  -2 filename =====> allow the user to view only two lines contents of a particular file
+
+tail =  output the last part of files
+
+    -E.g tail -2 messages
+
+
+Filters / Text Processors Commands
+===================================
+
+cut = remove sections from each line of files
+
+    cut filename = Does not work
+    cut --version = check version
+    cut -c1 filename = List one character
+    cut -c1,2,4 filename = Pick and chose character
+    cut -c1-3 filename = List range of characters
+    cut -c1-3, 6-8 filename = List specific range of 
+    cut -b1-3 filename = List by btye size
+    cut -d: -f 6 /etc/passwd = List first 6th column separated by :
+    ls -l | cut -c2-4 = Only print user permissions of files/dir
+    
+
+
+
+awk =  pattern scanning and processing language
+
+    awk --version = check version
+    awk '{print $1}' file = List 1st field from a file
+    ls -l | awk '{print $1, $3}' = list 1 and 3rd field of ls -l output
+    ls -l | awk '{print $NF}' = Last field of the output
+    awk ' /kramer/ {print}' filename = search for a specific word
+    awk -F: '{print $1}' /etc/passwd = output only 1st field of /etc/passwd
+    echo "Hello Tom" | awk '{$2="Adam"; print $0}' = Replace words field words
+    cat file | awk '{$2="Kollie"; print $0}' = replace words field words
+    awk 'length($0) > 15' file = Get lines that have more than 15 byte size
+    ls -l | awk '{if($9 == "seinfield") print $0;}' = get the field matching seinfield in /home/test
+    ls -l | awk '{print NF}' = number of fields.
+
+
+
+
+
+
+grep and egrep = print lines that match patterns
+
+sort = sort lines of text files
+
+uniq = report or omit repeated lines
+
+wc = print newline, words, and byte counts for each file
+
+
+
+
+
+
+
+
