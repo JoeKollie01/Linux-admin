@@ -373,6 +373,73 @@ diff = line by line
 cmp = byte by byte
 
 
+Compress and un-Compress Files
+=================================
+
+    tar = format of tape archive files
+
+        E.g tar cvf test.tar /home/test OR  = create archive
+        tar xvf tes.tar = un-archive the content of the file
+
+    gzip =  compress or expand files
+        E.g gzip test.tar
+
+    gzip -d OR gunzip = uncompress a file
+
+        E.g  gzip -d test.tar.gz
+
+Truncate File size (truncate)
+=============================
+
+    The linux truncate command is often used to shrink or extend the size of a file
+    to the specified size
+
+    Command
+        - truncate -s 10 filename
+
+
+Combininig and Splitting Files
+==============================
+
+    Multiple files can be combined into one and 
+    One file can be split into multiple files
+
+        -cat file1 file2 file3 > file4
+        -split file4
+
+            -e.g split -l 300 file.txt childfile
+
+            split -l 2 countries sep
+
+    Split file.txt into 300 lines per file and output to childfileaa, childfileab
+    and childfileac
+
+
+Linux vs. Windows Commands
+===============================
+
+ Command Description            Windows             Linux
+ Listing of a directory            dir                  ls -la
+ Rename a file                      ren                 mv
+ Copy a file                        copy                cp
+ Move file                          move                mv
+ Clear screen                       class               clear
+ Delete file                        del                 rm
+ Compare contents of files          fc                  diff
+ Search for a word/string in a file  find               grep
+ Display command help                  command /?       man command
+ Display your location in the file sys  chdir           pwd
+ Display the time                       time            date
+
+ 
+
+
+
+
+
+
+
+
 
 
 
