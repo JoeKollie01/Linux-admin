@@ -317,11 +317,61 @@ awk =  pattern scanning and processing language
 
 grep and egrep = print lines that match patterns
 
+    grep --version OR grep --help = check version or help
+    grep keyword file = search for a keyboard from a file
+    grep -c keyword file = search for a keyword and counts
+    grep -i KEYword file = search for a keyword ignore case-sensative
+    grep -n keyword file  = display the matched lines and their line numbers
+    grep -v keyword file  = display everything but keyword
+    grep keyword file | awk '{print $1}' = search for a keyword and then only give the 1st field
+    ls -l | grep Desktop = search for a keyword and then only give the 1st field
+
+    egrep -i "keyword | keyword" file = search for 2 keywords
+
+
 sort = sort lines of text files
 
+    sort --version OR sort --help = check version or help
+    sort file = sorts file in alphabetical order
+    sort -r file = sorts file in reverse alphabetical order
+    sort -k2 file = sort by field number
+
 uniq = report or omit repeated lines
+    
+    uniq file = removes duplicates
+    sort file | uniq  = Always sort first before using uniq their line numbers
+    sort file | uniq -c = sort first then uniq and list count
+    sort file | uniq -d = only show repeated lines
+
 
 wc = print newline, words, and byte counts for each file
+
+    wc --version OR wc --help = check version or help
+    wc file = check file line count, word count and byte count
+    wc -l file = get the number of lines in a file
+    wc -w file = get the number of words in a file
+    wc -c file = get the number of bytes in a file
+    wc DIRECTORY = Not allowed
+    ls -l | wc -l = number of files
+    grep keyword | wc -l  = number of keyword lines
+
+
+Command to grep the list of directories and it contents
+===========================================================
+
+    ls -l | grep drw
+
+Command to list only the directory
+=================================
+
+    ls -d */
+
+Compare Files
+=================
+
+diff = line by line
+cmp = byte by byte
+
 
 
 
