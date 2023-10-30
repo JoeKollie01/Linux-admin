@@ -1,0 +1,99 @@
+Linux File Editors
+======================
+A text editor is a program which enables user to create and manipulate 
+data (text) in a Linux file
+
+There are several standard text editors avialable on most Linux systems
+
+    -vi =============== visual editor
+    -ed ================ standard line editor
+    -ex ================== extended line editor
+    -emacs =============== a full screen editor
+    -pico =================  beginner's editor
+    -vim ================= advance version of vi
+
+Vi = is available in almost every Linux Distributions
+
+Introduction to vi Editor
+===========================
+vi supplies command for:
+    - Inserting and deleting text
+    - Replacing text
+    - Moving around the file
+    - Finding and substituting strings
+    - Cutting and pasting text
+
+
+Most common keys
+
+    -i = Inserting
+    - Esc = escape out any mode
+    - r = replace
+    - :q = quit without saving
+    - :wq! = quit and save
+
+Note: When navigating the vi editor, use the arrow keys on the keyboard.
+    By pressing the "d" will delete an entire lines and hitting the "u" will undo the changes
+    It is important to note that navigating while the editor is in insert mode can break it
+
+        -dd = delete a line
+        -u = undo changes
+        -s = delete a single character
+         shift + zz = save changes
+         -r = replace a single letter
+         -x = delete a single letter
+         - o = create a line 
+         /"keyword = provide only the keyword the user is searching for
+
+Difference between vi and vim editor
+====================================
+
+As far as functionality is concerned, both editors work in the same manner.
+Which editor the user choose is a matter of personal choice. Some people recommend learning
+the vim editor instead of the vi editor. Due to added features, learning and using vim editor is much easier than the vi editor
+
+Since vim is based on the vi, the user will learn how to use the vim editor
+
+vim has all the features as vi with some excellent addition
+
+There's also a comprehensive help system and lots of customization options available
+
+sed Command
+================
+
+Replace a string in a file with a newstring
+Find and delete a line
+Remove empty lines
+Remove the first or n lines in a file
+To replace tabs with spaces
+Show defined lines from a file
+Substitute within vi editor
+
+    -E.g  sed 's/word-to-replace/new-word/g' filename
+            - sed 's/Kenny/Lenny/' seinfield-characters
+        
+    Note: it display the changes to the screen not the file
+
+        - sed -i 's/Kenny/Lenny/g' seinfield-characters
+
+        Changes are made to the file and display as well
+
+
+        - sed 's/Costanza//g' seinfield-characters
+            = the above command remove name associated with the user
+
+        Find a string of line and remove it
+        sed '/keyword/d' seinfield-characters
+
+        Remove empty lines from a file
+        sed '/^$/d' seinfield-characters
+
+        Delete first two lines of a file
+        sed '1,2d' seinfield-characters
+
+        Remove tab from a file
+        sed 's/\t//g' seinfield-characters
+
+
+
+
