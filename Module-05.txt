@@ -86,14 +86,270 @@ Substitute within vi editor
         sed '/keyword/d' seinfield-characters
 
         Remove empty lines from a file
+        ==============================
         sed '/^$/d' seinfield-characters
 
         Delete first two lines of a file
+        ==================================
         sed '1,2d' seinfield-characters
 
         Remove tab from a file
+        ============================
         sed 's/\t//g' seinfield-characters
 
+        View only line from 12 - 18
+        ================================
+        sed -n 12,18p seinfield-characters
+
+        View everything expect line 18
+        ================================
+        sed 12,18d seinfield-characters
+
+        Create space after every line and characters
+        ============================================
+        sed G seinfield-characters
+
+        Replace a character expect other character on different line
+        ============================================================
+        sed '8!s/Seinfield/S/g' seinfield-characters
+
+
+User Account Management
+=============================
+
+Commands to create user
+-----------------------
+
+    *useradd
+    *groupadd
+    *userdel
+    *groupdel
+    *usermod
+
+Files where user(s) are found
+-----------------------------
+
+    /etc/passwd 
+    /etc/group
+    /etc/shadow
+
+Example
+
+    useradd -g superheros -s /bin/bash -c  "user description" -m -d /home/spiderman spiderman
+
+Verify the user account was created
+=====================================
+
+Run id username 
+    E.g id spiderman
+
+Command to create  a group
+================================
+    groupadd groupname
+    E.g groupadd superheros
+
+Verify the group was created
+=================================
+    cat /etc/group
+
+Delete a group
+=====================
+    groupdel groupname
+    E.g groupdel nonewgroup
+
+Delete user that was created
+==============================
+    userdel username
+
+    E.g userdel spiderman
+
+To delete the home directory of the user
+========================================
+
+    userdel -r spiderman
+
+
+Add user to a group
+=======================
+    usermod -G groupname username
+
+    E.g usermod -G superheros spiderman
+
+Verify the user was added to a group
+===================================
+
+    grep username /etc/group
+
+Change the group of the user
+============================
+    chgrp groupname username
+        E.g chgrp superheros spiderman
+
+Run the -R with the command to cascade the changes
+====================================================
+    chgrp -R groupname username
+
+
+
+The /etc/login.def File
+========================
+
+The change command - per user
+    Example
+
+change [-m min-days] [-M maxdays] [-d lastday] [-I inactive] [-E expiredate] [-W warndays]
+user
+
+File = /etc/login.defs
+
+    PASS_MAX_DAYS  99999
+    PASS_MIN_DAYS   0
+    PASS_WARN_AGE   7
+
+The chage Command
+====================
+    change user password expiry information
+
+    change [-m min-days] [-M maxdays] [-d lastday] [-I inactive] [-E expiredate] [-W warndays]
+user
+
+    Ex. chage -m 5 -M 90 -W 10 -I 3 username (babubutt)
+
+
+Switch Users and sudo Access
+=============================
+
+    Commands
+    su - username
+    sudo command
+    visudo 
+
+
+    File = /etc/sudoers 
+
+    Adding user to wheel group
+    ========================
+    usermod -aG wheel test (username)
+
+Monitor Users
+===============
+
+    Commands
+    ---------
+    who - show who is logged on
+    last - show a listing of last logged in users
+    w  - show who is logged on and what they are doing
+    finger -
+    id
+
+    Command to view the usernames that are login
+    ============================================
+    last | awk '{print $1}'
+
+
+Talking to Users
+================
+
+Commands
+    *users - print the user name of users currently logged in to the current host
+
+    *wall - write a message to all users
+        - when issue the command by typing in the message of today press ctrl + d
+
+    *write - send a message to another user
+
+
+Linux Account Authentication
+==============================
+
+Types of accounts
+    - local account
+    - Domain/Directory accounts
+
+Windows = Active Directory
+Linux = LDAP - is a protocol use to authenticate against a directory
+
+Difference between Active Directory, LDAP, IDM, WinBIND ,OpenLDAP etc
+=====================================================================
+
+Active Directory = Microsoft
+IDM = Identity Manager
+WinBIND = used in Linux to communicate with Windows (Samba)
+OpenLDAP (open source) 
+IBM Directory Server
+JumpCloud
+LDAP = Lightweight Directory Access Protocol
+
+System Utility Commands
+=========================
+date
+
+uptime
+    11:18:23 up 83 days,18:29 4 users, load average 0.16,0.03,0.01
+
+    11:18:23 - that's the current Linux system time
+    up 83 days,18:29 = shows for how long system has been running
+    4 users - number of users currently logged into your Linux System
+    load average 0.16,0.03,0.01 - the average CPU load (average number of jobs in your system's run queue)
+    for the 1,5 and 15 minutues
+
+    
+hostname
+
+uname - print system information
+which - show the path of (Shell) commands
+cal - display a calendar
+bc - an arbitrary precision calculator language
+
+
+Processes and jobs
+===================
+Application = Service
+Script  = is a list of instructions 
+Processes
+daemon
+Threads
+Job
+    Process /Services Commands
+    =========================
+    systemctl or service
+    ps
+    top
+    kill
+    crontab
+
+Systemctl command
+=====================
+
+systemctl command is a new tool to control system Services
+
+It is available in version 7 and later it replaces the services command
+
+Usage Example
+    systemctl start|stop|status servicename (firewalld)
+    systemctl enable servicename.service
+    systemctl restart | reload servicename.service
+    systemctl list-units --all
+
+The output has the following columns
+
+Unit - the systemd unit name
+Load - whether the unit configuration has been parsed by systemd. The configuration of loaded units is kept in Memory
+Active - summary state about whether the unit is active. This is usually a fairly basic way 
+to tell if the unit has started successfully or not
+
+SUB - this is a lower-level state that indicates more detailed information about the unit.
+This often varies by unit type, state and the actual method in which the unit returns
+
+DESCRIPTION : a short textual description of what the unit is/does
+
+To add a service under systemctl management
+    - create a unit file in /etc/systemd/system/servicename.service
+
+To control system with systemctl
+    systemctl poweroff 
+    systemctl  halt
+    systemctl reboot
 
 
 
