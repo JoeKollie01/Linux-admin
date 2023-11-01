@@ -351,5 +351,204 @@ To control system with systemctl
     systemctl  halt
     systemctl reboot
 
+PS Command
+============
+
+ps command stands for process status and it displays all the currently running processes in the Linux system
+
+Usage Examples
+    - ps = shows the process of the current shell
+
+PID = the unique process ID
+TTY = terminal type that the user logged in to
+TIME = amount of CPU in minutes and seconds that the process has been running 
+CMD = name of the command
+
+ps -e = shows all running processes
+ps aux = shows all running processes in BSD format
+ps -ef = show all running processes in full format listing (Most commonly used)
+ps -u username = shows all processes by username
+
+E.g  Viewing only processes of firewalld in Linux
+=================================================
+    ps -ef | grep firewalld
+
+
+top command
+================
+top command is used to show the Linux processes and it provides a real-time view of the running system
+The command show the summary information of the system and the list of processes or threads which are currently managed by the Linux kernel
+When the top command is executed then it goes into interactive mode and you can exit out by hitting "q"
+
+
+Usage: top
+
+PID = show task unique process id
+USER = username of ownner of task
+PR = the PR field shows the scheduling priority of the process from the perspective of the kernel
+NI = represent a NICE value of task. A Negative nice value implies higher priority and positive Nice value means lower priority
+VIRT = total virtual memory used by the task
+RES = memory consumed by the process in Rename
+S = this field shows the process state in the single letter form
+%CPU = represent the CPU Usage
+%MEM = shows the memory usage of task
+TIME+ = CPU time, the same as TIME but reflecting more granularity through hundredth of a seconds
+
+top -u username = shows tasks / processes by user owned
+top then press c = show command absolute path
+top then press k = kill a process by PID within top session
+top then M and P = to sort all Linux running processes by Memory usage
+
+kill command
+=================
+kill command is used to terminate processes manually. It sends a signal which ultimately terminates or kills a particular process or group of processes
+
+Usage:
+
+kill [OPTION] [PID]
+ OPTION = signal name or signal number / ID
+ PID = Process ID
+
+ kill -l = to get a list of all signal names or signal number
+
+ Most used signals are:
+ ====================
+ kill PID = kill a process with default signal
+ kill -1 = restart
+ kill -2 = interrupt from the keyboard just like CTRL c
+ kill -9 = forecefully kill the process
+ kill -15 = kill a process gracefully
+ killall = unrelated and child processes
+ pkill  = use the process name to kill
+
+
+ crontab command
+ ==================
+ crontab command is used to schedule tasks
+
+ crontab -e = edit the crontab
+ crontab -l = list the crontab entries
+ crontab -r = remove the crontab
+ crond = crontab daemon/service that manages scheduling
+ systemctl status crond = to manage the crond 
+
+
+Create crontab entry by scheduling a task:
+    crontab -e 
+    schedule, echo "This is my first crontab entry" > crontab-entry
+
+By default there are 4 different types of crontabs
+    -Hourly
+    -Daily
+    -Weekly
+    -Monthly
+
+All the above crons are setup in 
+    /etc/cron_ (directory)
+
+The timing for each are set in
+    -/etc/anacrontab -- except Hourly
+
+For Hourly
+    - etc/cron.d/0hourly
+
+Note: If you want to run a script daily/Hourly/weekly/monthly ======> move your script
+to the following files or directory
+
+
+
+
+at command
+===========
+at command is like crontab which allows you to schedule jobs but only once
+When the command is run it will enter interactive mode and you can get out by pressing CTRL d
+
+Usage:
+    at HH:MM PM = schedule a job 
+    atq = list the at entries
+    atrm # = remove at entry 
+    atd =  at daemon/service that manages scheduling
+    systemctl status atd = to manage the atd service
+
+Create at entry scheduling  a task:
+
+    at 4:45PM ===> enter
+    echo "This is my first at entry" > at-entry
+    at 2:45 AM 11012023 = schedule a job to run on Nov 01 2023 at 2:45AM
+    at 4PM + 4 days = schedule a job at 4pm four days from nonewgroup
+    at 8:00 AM Sun = schedule a job to 8am on coming Sunday
+    at 10:00 AM next month = schedule a job to 10am next month
+
+
+Process Management
+==============================
+Background = Ctrl -z , job and begin
+
+Foreground = fg 
+
+Run process even after exit = nohup process &
+    nohup process > /dev/null 2>&1 &
+
+Kill a process by name  = pkill
+
+Process priority = nice ( e.g nice -n 5 process)
+    - The niceness scale goes from -20 to 19. The lower the number more priority that task gets
+
+Process monitoring = top
+
+List process = ps
+
+
+System Monitoring
+================
+top = display Linux processes
+
+df = report file system disk space usage
+
+dmesg = print or control the kernel ring buffer
+
+iostat =  report cpu statistics and input/output statistics for devices and partitions 
+
+nestat = print network connections, routing tables, interface statistics, masquerade connections
+        and multicast memberships
+
+        netstat -rnv
+free = allocate and free dynamic memory
+
+cat /proc/cpuinfo =  show cpu information
+
+cat /proc/meminfo = show memory information
+
+
+Log Monitoring
+==================
+
+Another and most important way of system Administration is log monitor
+
+Log Directory = /var/log
+boot 
+Chronyd = NTP
+cron
+maillog
+secure
+messages
+httpd 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
