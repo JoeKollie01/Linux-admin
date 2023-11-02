@@ -534,6 +534,84 @@ secure
 messages
 httpd 
 
+System Maintenance Commands
+===========================
+    -Shutdown
+    - init 0 - 6
+    -reboot
+    -halt
+
+
+Changing System Hostname
+========================
+
+hostnamectl set-hostname newhostname = command to change the hostname of a Linux machine
+
+version 7 = edit /etc/hostname
+version 6 = edit /etc/sysconfig/network
+
+Finding System information
+===========================
+
+    cat /etc/redhat-release
+    uname -a 
+    dmidecode
+
+System Architecture
+=====================
+    Differences between a 32-bit and 64-bit CPU
+    A big difference between 32-bit processors and 64 bit processors is the number of calculations per seconds
+    they can perform
+
+    Command
+    --------
+    arch
+    uname -a 
+
+Terminal Control keys
+========================
+Several key combinations on your keyboard usually have a special effect on the terminal
+
+These "control" (CTRL) keys are accomplished by holding the CTRL key while typing the second key.
+For example, CTRL -c means to hold the CTRL key while you type the letter "c"
+
+
+The most common control keys are listed below:
+
+    CTRL -u = erase everything you've typed on the command line
+    CTRL -c  = stop/kill a command
+    CTRL -z = suspend a command
+    CTRL -d = exit from an interactive program
+
+Terminal Commands
+==================
+
+    -clear = clears your screen
+    -exit = exit out of the shell,terminal or a user session
+    - script  = command stores terminal activities in a log file that can be named
+                by a user, when a name is not provided by a user, the default file name typescript is used
+
+
+Recover Root Password
+=====================
+
+-Restart your computer
+-Edit grub
+-Change password
+-reboot
+ 
+    At the end of the line with "quiet" type in rd.break
+    Do ctrl x to start
+    rw init=/sysroot/bin/sh
+    ctrl x
+    chroot /sysroot
+    passwd root
+    exit
+    reboot
+
+
+
+
 
 
 
