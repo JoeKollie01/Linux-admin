@@ -609,6 +609,90 @@ Recover Root Password
     exit
     reboot
 
+What is SOS Report
+==================
+ SOS report = collect and package diagnostic and support data
+
+ Package name
+    - sos-version
+
+Environment variables
+=====================
+
+What are environment variables ?
+    An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer. They are part of the environment in which a process returns
+    
+    In simple words: set of defined rules and values to build an environment
+
+To view all environment variables
+    - printenv or env
+
+To view One environment variable
+    - echo $SHELL
+To set the environment variables
+    - export TEST=1
+    -  echo $TEST
+
+To set environment variable permanently
+    -vi .bashrc
+    - TEST='123'
+    - export TEST
+
+To set global environment variable permanently
+    -vi /etc/profile or /etc/bashrc
+    - TEST='123'
+    - export TEST
+
+Special Permission with setuid, setgid and sticky bit
+=====================================================
+
+All permissions on a file or directory are referred as bits
+
+There are 3 additional permissions in Linux
+    -setuid: bit tells Linux to run a program with the effective user id of the owner instead of the executor
+        E.g (passwd command) ====> /etc/shadow
+    
+    -setgid: bit tell Linux to run a program with the effective group id of the owner instead of the executor: (e.g locate or wall command)
+        Note!! This bit is present for only files which have executable permissions
+
+        
+    Note: " setuid and setgid" are not actual commands
+
+sticky bit : a bit set on files /directories that allows only the owner or root to delete those files
+
+
+To assign special permissions at the user level
+===============================================
+    chmod u+s xyz.sh
+
+To assign special permissions at the group level
+================================================
+    chmod g+s xyz.sh
+
+To remove special permissions at the user or group level
+========================================================
+    chmod u-s xyz.sh
+    chmod g-s xyz.sh
+
+To find all executables in Linux with setuid and setgid permissions
+===================================================================
+    - find / -perm /6000 -type f 
+
+
+Note: These bits work on c programming executables not on bash shell scripts
+
+Sticky bit
+==========
+    - it is assigned to the last bit of permissions
+         Why Example of /tmp directory
+
+        To assign sticky bit to a dir for accidentally deletion
+        ========================================================
+            chmod +t /nameof the dir
+
+
+
+
 
 
 
