@@ -1,0 +1,124 @@
+Linux Kernel
+================
+What is a kernel
+    - interface between hardware and Software
+
+
+Introduction to Shell
+=======================
+
+What is a Shell
+    - it's like a container
+    - interface between users and kernel/OS
+    - CLI is a Shell
+
+
+Find your Shell
+===============
+    -echo $0
+    - Avaialable Shells "cat /etc/shells"
+    - Your Shell? /etc/passwd
+
+Windows GUI is a shell
+Linux KDE GUI is a Shell
+Linux sh, bash etc is a Shell
+
+
+Types of Linux Shells
+======================
+    -Gnonme
+    -KDE
+    -sh
+    -bash
+    -csh and tcsh
+    -ksh
+
+Shell Scripting
+=================
+
+What is a Shell Script ?
+    A shell script is an executable file containing multiple shell commands that are executed sequentially. The file can contain:
+
+    -Shell (#!/bin/bash)
+    -Comments (# comments)
+    -Commands (echo, cp, grep etc)
+    -Statements (if, while, for etc)
+
+    
+Shell script should have executable permission (e.g -rwx r-x r-x)
+Shell script has to be called from absolute path (e.g /home/userdir/script.bash)
+If called from current location then ./script.bash
+
+
+Shell Script - Basic Scripts
+=============================
+
+Output to screen using "echo"
+
+Creating tasks
+    - telling your id, current location, your files/directories, system info
+    - Creating files or directories
+    -Output to a file ">"
+
+Filters/Text processors through scripts (cut, awk, grep, sort, uniq, wc)
+
+Input/Output
+=============
+Create script to take input from the user
+
+Commands to be used
+-------------------
+    read 
+    echo
+
+if-then Scripts
+===============
+
+If then statement
+
+    If this happens = do this
+    Otherwise  = do that
+
+
+For Loop Script
+===============
+
+For loops
+
+    Keep running until specified number of variable 
+    e.g variable = 10 then run the script 10 times
+
+    OR
+        variable = green, blue, red (then run the script 3 times for each color)
+
+do - while Scripts
+====================
+do while
+
+        The while statement continually executes a block of statements while a particular condition is true or met
+
+            e.g Run a script until 2 pm
+
+while [condition]
+
+do  
+        command1
+        command2
+        commandN
+
+done
+
+
+Case Statement Scripts
+======================
+
+Case
+
+    If option a is selected = do this
+    if option b is selected = do this
+    if option c is selected = do this
+
+
+
+
+
