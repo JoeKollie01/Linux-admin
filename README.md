@@ -14,9 +14,6 @@ This course comprises of the key concepts of Linux. It provides detail informati
 - [Joe Kollie](https://github.com/JoeKollie01)
 
 
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
 
 
