@@ -5,7 +5,9 @@ This course comprises of the key concepts of Linux. It provides detail informati
 
 
 
+## Author
 
+  Imram Afzal
 
 ## Learner
 
@@ -17,10 +19,5 @@ This course comprises of the key concepts of Linux. It provides detail informati
 [Documentation](https://linktodocumentation)
 
 
-## 🚀 About Me
-I'm a developer, Engineer, and solo-enterprenuer who's passionate about technologies.
 
 
-# Hi, I'm Joe! 👋
-
-Welcome to github repo,where you will find innovative project(s) that is changing the world for the better. Some of those projects can be incorporated into you day-today life operation. 
