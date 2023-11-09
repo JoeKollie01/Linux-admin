@@ -1,0 +1,39 @@
+Network Components
+===================
+IP
+subnet mask
+Gateway
+Static vs DHCP
+interface
+Interface MAC Address
+
+Network Files and Commands
+==========================
+Interface Detection
+Assigning an IP Address
+Interface configuration files
+    /etc/nsswitch.conf
+    /etc/hosts
+    /etc/sysconfig/network
+    /etc/sysconfig/network-scripts/ifcfg-nic
+    /etc/resolv.conf
+
+Network Commands
+===================
+ping
+ifconfig
+ifup or ifdown
+netstat
+tcpdump
+
+NIC
+=======
+NIC = Network Interface Card
+
+    example ethtool enp0s3
+
+Other NICs
+    lo = The loopback device is a special interface that your device use to communicate with itself. It is used mainly for daignostics and troubleshooting and to connect to servers running on the local machine
+
+    virb0 = The virbr0 or virtual bridge 0 interface is used for NAT (Network Address Translation). Virtual environments sometimes use it to connect to the outside network
+
