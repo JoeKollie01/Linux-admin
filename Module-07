@@ -37,3 +37,86 @@ Other NICs
 
     virb0 = The virbr0 or virtual bridge 0 interface is used for NAT (Network Address Translation). Virtual environments sometimes use it to connect to the outside network
 
+NIC Bonding
+=================
+NIC = Network Interface Card (PC or laptop)
+
+NIC(Network Interface Card) bonding is also known as Network bonding. It can be defined as the aggregation or combination of multiple NIC into a single bond interface.
+
+It is main purpose is to provide high availability and redundancy
+
+NIC Bonding Procedure
+=====================
+modprobe bonding
+modinfo bonding
+Create /etc/sysconfig/network-scripts/ifcfg-bond0
+Edit /etc/sysconfig/network-scripts/ethernet1
+Edit /etc/sysconfig/network-scripts/ethernet2
+
+New Network utilities
+=====================
+Network configuration methods
+    -nmtui
+    -nmcli
+    -nm-connection-editor
+    -GNOME 
+
+Getting Started with Network Manager
+    NetworkManager is a service that provides set of tools designed specifically to make it easier to manage the networking configuration on Linux systems and is the default network management service on RHEL 8 & 9
+
+    - It makes network management easier
+    -It provides easy setup of connection to the user
+    -NetworkManager offers management through different tools such as GUI, nmtui, and nmcli
+
+    Network configuration methods
+    ==================================
+
+    nmcli - short for network manager command line interface. This tool is useful when access to a graphical environment is not available and can also be used within scripts to makes network configuration changes
+
+    nmtui - short for network manager text user interface. This tool can be run within any terminal and allows changes to be made by menu selections and entering data
+
+    nm-connection-editor = a full graphical management tool providing access to most of the NetworkManager configuration options. It can only be accessed through the desktp or console
+
+    GNOME Settings = the network screen of the GNOME desktop setting application allow basic network management tasks to be performed
+
+Download Files or Apps
+=======================
+
+wget = the non-interactive network downloader
+
+Linux = wget
+    - Example in Linux
+        wget http://website.com/filename
+
+Why
+    Most of the servers in corporate
+    environment do NOT have internet access
+
+
+curl and ping Commands
+=========================
+
+Linux = curl
+
+Linux = ping
+
+Example in Linux
+    -curl http://website.com/filename
+    -curl -O http://website.com/filename
+
+    ping  www.pdcc.io
+
+
+FTP - File Transfer Protocol
+=============================
+
+The File Transfer Protocol is a standard network protocol used for the transfer of computer files between a client and server on a computer network. FTP is built on a client-server model architectur using separate control and data connections between the client and the server
+
+Protocol = Set of rules used by computers to communicate
+
+Default FTP Port = 21
+
+For lab we need  2 Linux machines
+
+    -Client = practice
+    -Server = test
