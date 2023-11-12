@@ -120,3 +120,119 @@ For lab we need  2 Linux machines
 
     -Client = practice
     -Server = test
+
+Install and configure FTP on the remote server
+==============================================
+    # Become root
+    # rpm -qa | grep ftp
+    # ping google.com
+    # yum install vsftpd
+    # vi /etc/vsftpd.conf     (make a copy first)
+        - cp vsftpd.conf vsftpd.conf.orig
+
+
+    Find the following line and makes the changes shown below
+    #Disable anonymous login##
+        -anonymous_enable=NO
+    
+    #Uncomment##
+        -ascii_upload_enable=YES
+        -ascii_download_enable=YES
+    
+    ##Uncomment - Enter you Welcome message - This is optional##
+        - ftpd_banner=Welcome to UNIXMEN FTP service
+    
+    ##Add at the end of this file##
+        - use_localtime=YES
+
+    #systemctl start vsftpd
+    #systemctl enable vsftpd
+    #systemctl stop firewalld
+    #systemctl disable firewalld
+    # useradd JoeKollie (if the user does not exist)
+
+Install FTP client on the client server
+======================================
+
+    #Become root
+    #yum install ftp
+    #su - username
+    $ touch kruger
+
+
+Commands to transfer file to the FTP server
+============================================
+
+    ftp 192.168.0.x
+    Enter username and password
+    bi
+    hash
+    put kruger
+    bye
+
+
+SCP - Secure Copy Protocol
+============================
+
+The Secure Copy Protocol or SCP helps to transfer computer files securely from a local to a remote host. It is somewhat similar to the File Transfer Protocol "FTP" but it adds security and authentication
+
+Protocol = Set of rules used by computers to communicate
+
+Default SCP Port = 22 (same as SSH)
+
+For this lecture we need  2 Linux machines
+
+    -Client = practice
+    -Server = test
+
+Procedure:
+
+SCP Commands to transfer file to the remote server
+==================================================
+
+Login as yourself
+touch filename
+scp filename test@192.168.0.x:/home/test
+Enter username and password
+
+
+
+rsync - Remote Synchronization
+===================================
+rsync - is a utility for efficiently transferring and synchronizing  files within the same computer or to a remote computer by comparing the modification times and sizes of files.
+
+    -rsync is a lot faster than ftp or scp
+
+    - This utility is mostly used to backup the files and directories from one server to another
+
+    Default rsync Port = 22 (same as SSH)
+
+        -Exercise: 2 Linux machines are require
+            Client = practice
+            Server = test
+
+Basic syntax of rsync command
+    #rsync options source destination
+
+Install rsync in your Linux machine (check if it already exists)
+    #yum install rsync (On CentOS/Redhat based systems)
+    #apt-get install rsync (On Ubuntu/Debian based systems)
+
+rsync a file on a local machine
+
+    $tar cvf backup.tar (tar the entire home (home/test))
+    $mkdir /tmp/backups
+    $rsync -zvh backup.tar /tmp/backups/
+
+rsync a directory on a local machine
+    $rsync -azvh /home/test /tmp/backups/
+
+rsync a file to a remote machine
+    $mkdir /tmp/backups (create /tmp/backups dir o remote server)
+    rsync -avz backup.tar test@192.168.0.x:/tmp/backups
+
+rsync a file from a remote machine
+    $touch serverfile
+    $rsync -avzh test@192.168.0.x:/home/test/serverfile /tmp/backups
+    
+
