@@ -228,11 +228,42 @@ rsync a directory on a local machine
     $rsync -azvh /home/test /tmp/backups/
 
 rsync a file to a remote machine
-    $mkdir /tmp/backups (create /tmp/backups dir o remote server)
+    $mkdir /tmp/backups (create /tmp/backups dir on remote server)
     rsync -avz backup.tar test@192.168.0.x:/tmp/backups
 
 rsync a file from a remote machine
     $touch serverfile
     $rsync -avzh test@192.168.0.x:/home/test/serverfile /tmp/backups
-    
+
+
+System Updates and Repos
+==========================
+
+yum (CentOS), apt-get(other Linux)
+
+rpm (Red hat Package Manager) - is used when you already have a package download on your system and can be used to install the package locally. It is mostly used in an environment where there is no internet access
+
+yum - download and install the package(s)
+
+System Upgrade/Patch Management
+================================
+
+There are two type of upgrades
+
+    Major version = 5,6,7
+
+Major version = yum command (cannot be upgraded using the yum command)
+
+Minor version = yum update
+
+Example:
+    yum update -y
+
+yum update vs. upgrade
+
+upgrade = delete packages
+
+update = preserve
+
+
 
