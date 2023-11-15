@@ -265,5 +265,22 @@ upgrade = delete packages
 
 update = preserve
 
+Create local Repository from DVD
+======================================
 
+What is local repository ?
+    - is a repository that hold all of your local rpm packages locally
+
+Command
+    -createrepo
+
+Advance Package Management
+==============================
+Installing Packages
+Upgrading
+Deleting
+View package details information
+Identify source or location
+information
+Packages configuration files
 
