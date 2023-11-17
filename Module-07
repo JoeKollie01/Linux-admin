@@ -284,3 +284,75 @@ Identify source or location
 information
 Packages configuration files
 
+Rollback Updates and Patches
+============================
+Virtual machine
+Physical machine
+
+Rollback a package or patch
+    - yum install <package-name>
+    - yum history undo <id>
+
+Rollback an update
+
+    Downgrading a system to minor version (ex RHEL 7.1 to RHEL 7.0) is not recommended as this might leave the system in undesired or unstable state
+
+    yum update = Update will preserve the 
+    yum upgrade = upgrade will delete obsolete packages
+    yum history undo <id>
+
+SSH AND Telnet
+=====================
+
+Telnet = unsecured connection between computers
+SSH = Secured
+
+Two type of packages for most of the services
+
+    -Client package
+    -Server package
+
+DNS = Domain Name System
+========================
+
+Purpose
+    Hostname to IP ---------------- (A Record)
+    IP to hostname ---------------- (PTR Record)
+    Hostname to Hostname-----------   (CNAME Record)
+
+Files
+
+        /etc/named.conf
+        /var/named
+
+Service
+    systemctl restart named
+
+
+Download, Install and Configure DNS
+===================================
+
+Create a snapshot of the virtual machine
+
+Setup
+
+    Master DNS
+    Secondary or Slave DNS
+    Client
+
+Domain Name = lab.local
+IP address = My IP address on enp0s3
+
+Install DNS package
+==================
+
+    - yum install bind bind-utils -y
+
+Configure DNS (Summary)
+=========================
+
+    Modify /etc/named.conf
+    Create two zone files (forward.lab and reverse.lab)
+    Modify DNS file permission and start the service
+
+
