@@ -483,4 +483,40 @@ Things to consider when hardening Linux OS
 Chage command - change user password expiry information
 
 
+OpenLDAP Installation
+======================
 
+What is OpenLDAP?
+    -
+
+OpenLDAP Service
+    - slapd
+
+Start or Stop the service
+    - systemctl start slapd
+    - systemctl enable slapd
+
+Configuration Files
+    -/etc/openldap/slapd.d
+    
+Trace Network Traffic (traceroute)
+====================================
+
+The traceroute command is used in Linux to map the journey that a packet of information undertakes from its source to its destination. One use for traceroute is to locate when data loss occurs throughout a network, which could signify a node that's down.
+
+Because each hop in the record reflects a new server or router between the originating PC and the intended target, reviewing the results of a traceroute scan also lets you identify slow points that may adversely affect your network traffic.
+
+
+Example
+
+# traceroute www.google.com
+
+
+How to Open an Image File
+==========================
+
+Become root
+
+dnf install GraphicsMagic
+
+display image-file
