@@ -519,4 +519,71 @@ Become root
 
 dnf install GraphicsMagic
 
-display image-file
+display image-
+
+Configure and secure SSH
+========================
+
+SSH
+
+    - SSH stand for secure shell - provides you with an interface to the Linux system. It takes in your commands and translate them to kernel to manage hardware
+
+
+OpenSSH is a package/software
+
+Its service daemon is sshd
+
+SSH port # 22
+
+SSH itself is secure, meaning communication through SSH is always encrypted but there should be some additional configuration can be done to make it more secure 
+Following are the most common configuration an administrator should take to secure SSH
+
+Configure Idle Timeout Interval
+
+Avoid having an unattended SSH session you can set an Idle timeout interval
+
+Become root
+Edit your /etc/ssh/sshd_config file and add the following line
+ClientAliveInterval 600
+ClientAliveCountMax 0
+# systemctl restart sshd
+
+The idle timeout interval you are setting is in seconds (600 secs = 10 minutes). Once the interval has passed, the idle user will be automatically logged out.
+
+
+Access Remote Server without Password(SSH-Key)
+==============================================
+
+Two reasons to access a remote machine
+    -Repetitive logins
+    -Automation through scripts
+
+Keys are generated at user level
+    -test
+    -root
+
+Process for client
+===================
+Step 1 - Generate the Key
+# ssh-keygen
+
+Step 2 - Copy the Key to the server
+
+# ssh-copy-id root@I.P address
+
+Step 3 - Loging from client to server
+# ssh root@I.P address
+# ssh -l root I.P address
+
+
+Cockpit
+==============
+Cockpit is a server administration tool Red Hat, focused on providing a modern-looking and user-friendly interface to manage and administer servers
+
+Cockpit is the easy to use integrated glanceable and open web-based interface for your servers
+
+The application is available in most of the Linux distributions such as CentOS, Redhat, Ubuntu and Fedora
+
+It is installed in Redhat 8 by default and it is optional in version 7
+
+It can monitor system resources add or remove accounts, monitor system usage shut down the system and perform quite a few other tasks all through a very accessible web connection
