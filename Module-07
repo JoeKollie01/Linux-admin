@@ -618,4 +618,55 @@ Before working with iptables make sure firewalld is not running and disable it
     -systemctl disable firewalld = to prevent from starting at boot
     -systemctl mask forewalld = to prevent if from running by other programs
 
-    
+
+Now check if the iptables-service package installed
+    -rpm -qa | grep iptables-service
+    -yum install iptables-service - if not installed then
+
+Start the service
+
+    -systemctl start iptables
+    -systemctl enable iptables
+
+To check the iptables rules
+    - iptables -L
+
+To flush iptables
+    -iptables -F
+
+Firewalld works the same way as iptables but of course it has it own commands
+    -firewall -cmd
+
+It has a few pre-defined service rules that are very easy to turn on and off
+
+    - Services such as NFS, NTP, HTTPD etc
+
+
+Firewalld also has the following
+
+    -Table
+    -Chains
+    -Rules
+    -Targets
+
+Run one or the other
+    iptables or firewalld
+
+Make sure iptables is stopped, disabled and mask
+
+    -systemctl stop iptables 
+    -systemctl disable iptables
+    -systemctl mask iptables
+
+Now check if firewalld package is installed
+
+    rpm -qa | grep firewalld
+
+
+Start firewalld
+   
+   systemctl start/enable firewalld
+
+Get the listing of all services firewalld is aware of
+
+    -firewall-cmd--list-all
