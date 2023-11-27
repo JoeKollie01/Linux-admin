@@ -665,8 +665,287 @@ Now check if firewalld package is installed
 
 Start firewalld
    
-   systemctl start/enable firewalld
+   systemctl start/enable 
+   
+Check the rule of firewalld
+
+    firewall-cmd --list-all
 
 Get the listing of all services firewalld is aware of
 
-    -firewall-cmd--list-all
+    -firewall-cmd --get-services
+
+To make firewalld re-read the configuration added
+
+    firewall-cmd --reload
+
+The firewalld has multiple zone, to get a list of all zones
+    - firewall-cmd --get-zones
+
+To get the list of active zones
+    - firewall-cmd --get-active-zones
+
+To get firewall rules for public zone
+    -firewall-cmd --zone=public --list-all
+
+All services are pre-defined by firewalld. What if you want to add a 3rd party service
+
+        -/usr/lib/firewalld/services/allservices.xml
+        -Simply cp any xml file and change the service and port number
+
+To add a service (http)
+    - firewall-cmd --add-service=http
+
+To remove a service
+    -firewall-cmd --remove-service=http
+
+To reload the firewall configuration
+    -firewall-cmd --reload
+
+To add or remove a service permanently
+    -firewall-cmd --add-service=http --permanent
+    -firewall-cmd --remove-service=http --permanent
+
+To add a service that is not pre-defined by firewalld
+
+    /usr/lib.firewalld/services/allservices.xml
+    - Simply cp any xml file sap.xml and change the service and port number (32)
+    - systemctl restart firewalld
+    - firewall-cmd --get-services (to verify new service)
+    - firewall-cmd --add-service=sap
+
+To add a port
+
+    -firewall-cmd --add-port=1110/tcp
+
+To remove a port
+    -firewall-cmd --remove-port=1110/tcp
+
+To reject incoming traffic from an IP address
+
+    -firewall-cmd --add-rich-rule='rule family="ipv4" source address="192.168.0.25" reject'
+
+To block and unblock ICMP incoming traffic
+    -firewall-cmd --add-icmp-block-inversion
+
+To unblock ICMP incoming traffic
+    -firewall-cmd --remove-icmp-block-inversion
+
+To block outgoing traffic to a specific website/IP address
+    - host -t a www.facebook.com = find IP address
+    firewall-cmd --direct --add-rule ipv4 filter OUTPUT 0 -d  IP address -j DROP
+
+Tune System Performance
+======================
+
+What is tuned?
+    - Tuned pronounced as tune-d
+    -Tune is for system tunining and d for daemon
+    - It is systemd service that is used to tune Linux system performance
+    - It is installed in CentOS/Redhat version 7 and 8 by default
+        -tuned package name is tuned
+    
+    The tuned service comes with pre-defined profiles and settings 
+    Based on selected profile the tuned service automatically adjust system to get the best
+    performance.E.g tuned will adjest networking if you are downloading a large file or it will adjust IO settings if it detects high storage read/write
+
+    Check if package has been installed
+
+        -rpm -qa | grep tuned
+
+    Installed tuned package if NOT installed already
+
+        -yum install tuned
+    
+    Check tuned  service status
+
+        -systemctl status | enable | start tuned
+
+    Command to change setting for tuned daemon
+
+        tuned-adm
+
+    To check which profile is active
+
+        -tuned-adm active
+    
+    To list available profiles
+
+        -tuned-adm list
+    
+    To change to desired profile
+
+        -tuned-adm profile profile-name
+
+    Check for tuned recommendation
+        -tuned-adm recommend
+    
+    Turn off setting daemon
+        -tuned-adm off
+    
+    Change profile through web console
+        - Login to https://IP.address:9090
+
+        Overview > Configuration > Performance profile
+    
+
+    Another way of keeping your system fine tuned is by prioritzing processes through "nice" and "renice" command
+
+    If a server has 1 CPU then it can execute 1 computation/process at a time as they come in (first come first served) while other processes must wait
+
+    With nice and renice commands we can make the system to give preference to certain processes than others
+
+    This priority can be set at 40 different levels
+
+    To check process priority
+
+        -top
+
+    Nice value is a user-space and priority PR is the process's actual priority that use by Linux kernel.In Linux system priorities are 0 to 139 in which 0 to 99 for real and 100 to 139 for users
+
+    Process priority can be views through ps command as well with the right options
+
+        $ ps axo pid,com,nice,cls --sort=-nice
+
+    To set the process priority
+
+        nice -n # process-name
+
+        e.g nice -n -15 top
+
+    To change the process priority
+
+        -renice -n # process-name
+        e.g renice -n 12 PID
+
+
+    Run Containers
+    ===============
+
+    What is a Container?
+
+        Container allowed developers or programmer to test and build applications on any computer just by putting it in a container (bundled in with the software code, libraries and configuration files) and then on another computer regardless of its architecture
+
+    What are the Container Software
+    ===============================
+
+        -docker
+    
+    Docker is the software used to create and manage containers
+
+        -podman
+            - is an alternative to docker
+            Docker is not supported in RHEL 8
+
+            It is daemon less, open source, Linux-native tool designed to develop, manage and run containers.
+
+Getting Familiar with Redhat Container Technology
+===============================================
+
+    Redhat provides a set of command-line tools that can operate without a container engine, these include:
+
+    podman - for directly managing pods and container images (run, stop , ps, attach etc)
+
+    buildah - for building, pushing, and signing container images
+
+    skopeo - for copying, inspecting, deleting, and signing images
+
+    runc - for providing container run and build features to podman and buildah
+
+    crun - an optional runtime that can be configured and gives greater flexibility control and security for rootless
+
+Getting Familiar with podman Container Technology
+================================================
+
+When you hear about containers then you should know the following as well
+    -images - containers can be created through images containers can be converted to images
+
+    -pods - Group of containers deployed together on the host. In the podman logo there are 3 seals grouped together as a pod
+
+Building, Running and Managing Containers
+==========================================
+
+To install podman
+    - yum/dnf install podman -y
+    - yum install docker -y
+
+
+Creating alias to docker
+    -alias docker=podman
+
+Check podman version
+    -podman -v
+
+Getting help
+    -podman --help or man podman
+
+Check podman environment and registry/repository information
+    -podman info
+
+To search a specific image in repository
+    -podman search httpd
+
+To list any previously downloaded podman images
+    -podman images
+
+To download available images
+    - podman pull docker.io/library/httpd
+
+To confirm if images have been downloaded 
+    - podman images
+
+To list podman running containers
+
+    -podman ps
+
+To run a downloaded httpd containers
+
+    - podman run -dt -p 8080:80/tcp docker.io/library/httpd
+        (d - detach t=get the tty shell , p = port)
+    
+    podman ps or check httpd through web browser
+
+To view podman logs
+    -podman logs -l
+
+To stop running container
+    -podman stop con-name
+
+To run a multiple containers of httpd by changing the port #
+
+    -podman run -dt -p 8081:80/tcp docker.io/library/httpd
+    -podman run -dt -p 8082:80/tcp docker.io/library/httpd
+
+To stop and start a previously running container
+    -podman stop|start con-name
+
+To create a new container from the downloaded image
+    -podman create --name httpd docker.io/library/httpd
+
+To start the newly created container
+    -podman start httpd
+
+Manage containers through systemd
+    First you have to generate a unit file
+        -podman generate systemd --new --file --name httpd
+
+Copy it systemd directory
+    -cp /root/container-httpd.services /etc/systemd/system
+
+
+
+
+
+
+    
+
+    
+
+
+
+    
+
+
+
+
+    
