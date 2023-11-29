@@ -933,6 +933,28 @@ Copy it systemd directory
     -cp /root/container-httpd.services /etc/systemd/system
 
 
+Kickstart (Automate Linux Installation)
+=======================================
+
+Kickstart is a method to automate the Linux installation without the need for any intervention from the user.
+
+With the help of kickstart you can automate questions that are asked during the installation e.g
+
+- Language and timezone
+- How the drives should be partitioned
+- Which packages should be 
+
+
+
+DHCP
+========
+
+DHCP the acroynm meaning Dynamic Host Configuration Protocol
+    - in order to communicate over the network, a computer needs to have an IP address
+
+DHCP server is responsible to automatically assign IP addresses to servers,laptop, desktops and other devices on the network
+
+
 
 
 
