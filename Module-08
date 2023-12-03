@@ -1,0 +1,116 @@
+System Run Level
+===================
+
+System Run Levels
+
+    Main Run level with init
+    ----------------------------
+    - 0 - shutdown (or halt) the system
+    - 1 - single-user mode; usually aliased as s or S
+    - 6 - Reboot the system
+
+    Other Run levels
+    ------------------
+
+    2 - multiuser mode without networking
+    3 - multiuser mode with networking
+    5 - multiuser mode with networking and GUI
+
+    Note: run-level 4 is undefined or not used/User-definable
+
+Computer Boot Process
+=====================
+
+When the computer boot >  The CPU starts & pulls instructions from the BIOS software > ROM  > CMOS battery = complementary metal-oxide semi-conductor  - it has BIOS settings including system time, date as well as hardware settings
+
+ > POST ( Power on self test)
+
+ Linux Boot Process
+ =======================
+
+    BIOS - executes MBR
+
+    MBR - executes GRUB
+
+    GRUB - executes kernel
+
+    Kernel - executes /sbin/init
+
+    Init - executes runlevel programs
+
+    Runlevel - execute from /etc/rc.d/rc*.d/
+
+Message of the Day
+====================
+
+Message of the day file location
+
+    - /etc/motd
+
+
+Customize Message of the Day
+==============================
+
+Once again, message of the day is the first message users will see when they login to the Linux machine
+
+Steps:
+
+Create a new file in /etc/profile.d/motd.sh
+Add desired commands in motd.sh file
+Modify the /etc/ssh/sshd_config file to edit
+    #PrintMotd yes to PrintMotd no
+    Restart sshd service
+        -systemctl restart sshd.service
+
+
+Computer Storage
+====================
+
+Local Storage
+    -RAM, HDD, SSD etc
+
+DAS (Direct Attached Storage)
+    -CD/DVD, USB flash drive, external disk directly attached with
+    USB or other cables
+
+SAN (Storage Area Network)
+    - Storage attached through iSCSI or fiber cable
+
+NAS (Network Attached Storage)
+
+    -Storage attached over network (TCP/IP)
+    -E.g Samba, NFS etc
+
+Disk Partition
+==============
+
+Commands for disk partition
+    -df
+    -fdisk
+
+Adding Disk and Creating Partition
+================================
+Purpose = Out of Space, Additional Apps etc
+
+
+Logical Volume Management
+===========================
+
+LVM allows disks to be combined together
+
+
+Add Disk and Create LVM Partition 
+==================================
+
+File System = datafs
+Logical Volume(s) = datalv
+Volume Group = datavg
+Physical Volume = /dev/sda1 /dev/sdb1 /dev/sdc1
+Partitions = /dev/sda1 /dev/sdb1 /dev/sdc1
+Hard Disks = /dev/sda /dev/sdb /dev/sdc
+
+
+
+    
+
+
