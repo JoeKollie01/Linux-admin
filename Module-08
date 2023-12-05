@@ -109,8 +109,103 @@ Physical Volume = /dev/sda1 /dev/sdb1 /dev/sdc1
 Partitions = /dev/sda1 /dev/sdb1 /dev/sdc1
 Hard Disks = /dev/sda /dev/sdb /dev/sdc
 
+Add and Extend Disk using LVM
+==============================
+
+-Delete files to free up disk space
+-Add new physical disk mount to /oracle2
+-Create a new virtual disk and mount to /oracle2
+-Or extend /oracle throguh LVM
+
+Add/Extend Swap Space
+========================
+
+What is swap ?
+
+    - is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory
 
 
-    
+Recommended swap size = Twice the size of RAM
+    M = Amount of RAM in GB, and S = Amount of swap in GB, then
+
+    if M < 2  
+    then   S = M * 2
+    Else   S = M + 2
+
+    Commands 
+        - dd
+        - mkswap
+        - swapon or swapoff
+
+
+Implement Advanced Storage Features
+======================================
+
+RedHat 8 introduces the next generation volume management solution called Stratis
+
+It uses thin provisioning by default
+
+It combines the process of creating logical volume management (LVM) and creation of filesystems into one management
+
+In LVM if a filesystem system gets full you will have to extend it manually whereas stratis extends the filesystem automatically if it has available space in its pool
+
+Install Stratis package
+    -yum/dnf install stratis-cli stratisd
+
+Enable and start Stratis service
+    - systemctl enable | start stratisd
+
+Add 2x 5G new disk from virtualization software and verify at the OS level
+    -oracle virtualbox storage setting lsblk
+
+Create a new stratis pool and verify
+    -stratis pool create pool1 /dev/sdb
+    stratis pool list
+
+Extend the pool
+    -stratis pool add-data pool1 /dev/sdc
+    - stratis pool list
+
+Create a new filesystem using stratis
+    stratis filesystem create pool1 fs1
+    stratis filesystem list
+
+Create a directory for mount point and mount filesystem
+    mkdir /bigdata
+    mount  /dev/stratis/pool1/fs1 /bigdata
+    lsblk
+
+Create a snapshot of your filesystem
+    stratis filesystem snapshot pool1 fs1 fs1-snap
+    stratis filesystem list
+
+Add the entry to /etc/fstab to mount at boot
+
+    -UUID="asf-0887afgddja-" /bigdata xfs defaults, x-
+    systemd.requires-stratisd.service 0 0
+
+RAID
+======
+
+RAID (Redundant Array of Independent Disks)
+
+Type of RAID
+============
+RAID 0
+RAID 1
+RAID 5
+
+
+File System Check (fsck and xfs_repair)
+=========================================
+
+Linux fsck utility is used to check and repair Linux filesystems
+(ext2 ext3 ext4 etc)
+
+Linux xfs_repair utility is used to check and repair Linux
+filesystems for xfs filesystem type
+
+Depending on when was the last time a filesystem was checked, the system runs the fsck during boot time to check whether the filesystem is in consistent state
+
 
 
