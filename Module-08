@@ -208,4 +208,64 @@ filesystems for xfs filesystem type
 Depending on when was the last time a filesystem was checked, the system runs the fsck during boot time to check whether the filesystem is in consistent state
 
 
+System Backup (dd Command)
+==============================
 
+5 Different Types of Backups
+-----------------------------
+1. System backup (entire image using tools such as acronis, Veeam, Commvault etc)
+
+2.Application backup (3rd party application backup solution)
+
+3.Database backup (Oracle dataguard, SQL backup etc)
+
+4. Filesystem backup (tar, gzip directories etc)
+
+5. Disk backup or disk cloning (dd command)
+
+dd is a command-line utility for Unix and Unix-like operating systems whose primary purpose is to convert and copy files
+
+As a result, dd can be used for tasks such as backing up the boot  sector of a hard drive, and obtaining a fixed amount of random data
+
+To backup or clone an entire hard disk to another connected to the same system, execute the dd command as shown
+
+# dd if=<source file name> of=<target file name> [Options]
+
+# dd if =/dev/sda of=/dev/sdb
+
+To backup/copy the disk partition 
+
+# dd if =/dev/sda1 of=/root/sda1.img
+
+Restoring this image file to other machine after copying the img
+
+# dd if=/root/sda1.img of=/dev/sdb3
+
+Network File System (NFS)
+==========================
+
+NFS stands for Network File System, a file system developed by Sun Microsystems Inc.
+
+It is a client/server system that allows users to access files across a network and treat them as if they resided in a local file directory
+
+
+Install NFS packages
+
+# yum install nfs-utils libnfsidmap
+
+Once the packages are installed enable and start NFS services
+
+# systemctl enable rpcbind
+# systemctl enable nfs-server
+# systemctl start rpcbind, nfs-server, rpc-statd, nfs-idmaps
+
+Create NFS share directory and assign permissions
+
+#mkdir /mypretzels
+#chmod a+rwx /mypretzels
+
+Modify /etc/exports file to add new shared filesystem
+
+# /mypretzels 192.168.12.7 (rw sync , no_root_squash) = for only 1 host
+
+# /mypretzels * (rw, sync , no_root_squash) = for everyone
